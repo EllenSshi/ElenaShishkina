@@ -7,19 +7,17 @@ import org.testng.annotations.*;
 import java.util.List;
 
 public class ExerciseOneTest extends AbstractTest {
+
     @Test
     public void testFirstExercise() {
         //1. Open test site by URL
-        driver.get("https://jdi-testing.github.io/jdi-light/index.html");
+        open();
         //2. Assert Browser title
-        softAssert.assertEquals(driver.getTitle(), "Home Page");
+        assertTitle();
         //3. Perform login
-        driver.findElement(By.className("profile-photo")).click();
-        driver.findElements(By.id("name")).get(0).sendKeys("Roman");
-        driver.findElements(By.id("password")).get(0).sendKeys("Jdi1234");
-        driver.findElements(By.id("login-button")).get(0).click();
+        loginAsUser();
         //4. Assert Username is loggined
-        softAssert.assertEquals(driver.findElements(By.id("user-name")).get(0).getText(), "ROMAN IOVLEV");
+        assertUserLoggined();
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         softAssert.assertEquals(driver.findElement(By.cssSelector(".nav a[href='index.html']")).getText(),
                 "HOME");
