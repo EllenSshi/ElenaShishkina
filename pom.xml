@@ -28,7 +28,16 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                    <suite.file>${project.basedir}/src/test/resources/hw1/add-and-subtract-operations-suite.xml</suite.file>
+                    <suite.file>${project.basedir}/src/test/resources/hw2/all-tests-suite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>add-and-subtract</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw1/add-and-subtract-operations-suite.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -61,6 +70,17 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.2.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
