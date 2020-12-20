@@ -41,14 +41,10 @@ public class ExerciseTwoTest extends AbstractTest {
         //	•	for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         //	•	for radio button there is a log row and value is corresponded to the status of radio button
         //	•	for dropdown there is a log row and value is corresponded to the selected value.
-        driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), '"
-                + checks.get(0) + ": condition changed to true')]"));
-        driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), '"
-                + checks.get(1) + ": condition changed to true')]"));
-        driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), 'metal: value changed to  "
-                + radios.get(0) + "')]"));
-        driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), 'Colors: value changed to "
-                + color + "')]"));
+        findTextInLog(checks.get(0) + ": condition changed to true");
+        findTextInLog(checks.get(1) + ": condition changed to true");
+        findTextInLog("metal: value changed to  " + radios.get(0));
+        findTextInLog("Colors: value changed to " + color);
         softAssert.assertAll();
     }
 }

@@ -66,4 +66,9 @@ public abstract class AbstractTest {
             }
         }
     }
+
+    public void findTextInLog(String text) {
+        driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), '"
+                + text + "')]"));
+    }
 }
