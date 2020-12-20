@@ -3,10 +3,13 @@ package hw2;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
@@ -52,5 +55,15 @@ public abstract class AbstractTest {
 
     public void assertUserLoggined() {
         softAssert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
+    }
+
+    public void clickCheckboxOrRadio(List<WebElement> elements, List<String> names) {
+        for (WebElement element : elements) {
+            for (String name : names) {
+                if (element.getText().equals(name)) {
+                    element.click();
+                }
+            }
+        }
     }
 }

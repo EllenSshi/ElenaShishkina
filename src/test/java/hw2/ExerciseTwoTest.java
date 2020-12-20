@@ -23,23 +23,16 @@ public class ExerciseTwoTest extends AbstractTest {
         driver.findElement(By.partialLinkText("SERVICE")).click();
         driver.findElement(By.cssSelector(".dropdown-menu a[href='different-elements.html']")).click();
         //6. Select checkboxes
+        List<WebElement> checkboxes = driver.findElements(By.className("label-checkbox"));
         List<String> checks = new ArrayList<>();
         checks.add("Water");
         checks.add("Wind");
-        List<WebElement> checkboxes = driver.findElements(By.className("label-checkbox"));
-        for (WebElement element : checkboxes) {
-            if (element.getText().equals(checks.get(0)) || element.getText().equals(checks.get(1))) {
-                element.click();
-            }
-        }
+        clickCheckboxOrRadio(checkboxes, checks);
         //7. Select radio
-        String radio = "Selen";
         List<WebElement> radiobuttons = driver.findElements(By.className("label-radio"));
-        for (WebElement element : radiobuttons) {
-            if (element.getText().equals(radio)) {
-                element.click();
-            }
-        }
+        List<String> radios = new ArrayList<>();
+        radios.add("Selen");
+        clickCheckboxOrRadio(radiobuttons, radios);
         //8. Select in dropdown
         String color = "Yellow";
         driver.findElement(By.className("colors")).click();
@@ -53,7 +46,7 @@ public class ExerciseTwoTest extends AbstractTest {
         driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), '"
                 + checks.get(1) + ": condition changed to true')]"));
         driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), 'metal: value changed to  "
-                + radio + "')]"));
+                + radios.get(0) + "')]"));
         driver.findElement(By.xpath("//ul[@class='panel-body-list logs']/*[contains(text(), 'Colors: value changed to "
                 + color + "')]"));
         softAssert.assertAll();
