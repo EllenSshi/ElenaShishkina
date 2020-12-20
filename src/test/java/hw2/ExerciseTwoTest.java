@@ -12,31 +12,31 @@ public class ExerciseTwoTest extends AbstractTest {
     @Test
     public void testSecondExercise() {
         //1. Open test site by URL
-        open();
+        open("index.html");
         //2. Assert Browser title
-        assertTitle();
+        assertTitle("Home Page");
         //3. Perform login
-        loginAsUser();
+        loginAsUser("Roman", "Jdi1234");
         //4. Assert User name in the left-top side of screen that user is loggined
-        assertUserLoggined();
+        assertUserLoggined("ROMAN IOVLEV");
         //5. Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.partialLinkText("SERVICE")).click();
-        driver.findElement(By.cssSelector(".dropdown-menu a[href='different-elements.html']")).click();
+        clickOnElement(By.partialLinkText("SERVICE"));
+        clickOnElement(By.cssSelector(".dropdown-menu a[href='different-elements.html']"));
         //6. Select checkboxes
         List<WebElement> checkboxes = driver.findElements(By.className("label-checkbox"));
         List<String> checks = new ArrayList<>();
         checks.add("Water");
         checks.add("Wind");
-        clickCheckboxOrRadio(checkboxes, checks);
+        selectCheckboxOrRadio(checkboxes, checks);
         //7. Select radio
         List<WebElement> radiobuttons = driver.findElements(By.className("label-radio"));
         List<String> radios = new ArrayList<>();
         radios.add("Selen");
-        clickCheckboxOrRadio(radiobuttons, radios);
+        selectCheckboxOrRadio(radiobuttons, radios);
         //8. Select in dropdown
         String color = "Yellow";
-        driver.findElement(By.className("colors")).click();
-        driver.findElement(By.xpath("//option[contains(text(), '" + color + "')]")).click();
+        clickOnElement(By.className("colors"));
+        clickOnElement(By.xpath("//option[contains(text(), '" + color + "')]"));
         //9. Assert that
         //	•	for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         //	•	for radio button there is a log row and value is corresponded to the status of radio button
