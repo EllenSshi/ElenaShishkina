@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    private final static String path = "different-elements.html";
+    private final static String path = properties.getDifElementsPagePath();
 
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxes;

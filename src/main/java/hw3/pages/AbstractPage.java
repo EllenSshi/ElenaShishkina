@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AbstractPage {
 
-    MyProperties properties = new MyProperties();
+    static MyProperties properties = new MyProperties();
     private WebDriver driver;
     private final String baseUrl = properties.getBaseUrl();
     private String url;

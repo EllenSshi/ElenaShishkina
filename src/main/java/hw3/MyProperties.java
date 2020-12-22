@@ -10,6 +10,9 @@ public class MyProperties {
     protected String password;
     protected String baseUrl;
     protected String fullUserName;
+    protected String indexPagePath;
+    protected String difElementsPagePath;
+
     public MyProperties() {
         try (InputStream input = new FileInputStream("config.properties")) {
 
@@ -23,6 +26,8 @@ public class MyProperties {
             password = prop.getProperty("password");
             baseUrl = prop.getProperty("baseurl");
             fullUserName = prop.getProperty("fullusername");
+            indexPagePath = prop.getProperty("indexpagepath");
+            difElementsPagePath = prop.getProperty("difelementspagepath");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -42,4 +47,8 @@ public class MyProperties {
     }
 
     public String getFullUserName() { return fullUserName; }
+
+    public String getIndexPagePath() { return indexPagePath; }
+
+    public String getDifElementsPagePath() { return difElementsPagePath; }
 }
