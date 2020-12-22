@@ -14,19 +14,19 @@ public class LeftSideMenu {
     private List<WebElement> leftSideMenuItems;
 
     @FindBy(css = ".sidebar-menu > li[index='1'] span")
-    public WebElement homeItem;
+    private WebElement homeItem;
 
     @FindBy(css = ".sidebar-menu > li[index='2'] span")
-    public WebElement contactFormItem;
+    private WebElement contactFormItem;
 
     @FindBy(css = ".sidebar-menu > li[index='3'] span")
-    public WebElement serviceItem;
+    private WebElement serviceItem;
 
     @FindBy(css = ".sidebar-menu > li[index='4'] span")
-    public WebElement metalsAndColorsItem;
+    private WebElement metalsAndColorsItem;
 
     @FindBy(css = ".sidebar-menu > li[index='5'] span")
-    public WebElement elementsPacksItem;
+    private WebElement elementsPacksItem;
 
     public LeftSideMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);

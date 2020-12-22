@@ -19,22 +19,22 @@ public class IndexPage extends AbstractPage {
     private List<WebElement> benefitTexts;
 
     @FindBy(css = ".benefits .col-sm-3:nth-child(1) .benefit-txt")
-    public WebElement practiceText;
+    private WebElement practiceText;
 
     @FindBy(css = ".benefits .col-sm-3:nth-child(2) .benefit-txt")
-    public WebElement customText;
+    private WebElement customText;
 
     @FindBy(css = ".benefits .col-sm-3:nth-child(3) .benefit-txt")
-    public WebElement multiText;
+    private WebElement multiText;
 
     @FindBy(css = ".benefits .col-sm-3:nth-child(4) .benefit-txt")
-    public WebElement baseText;
+    private WebElement baseText;
 
     @FindBy(id = "frame")
     private WebElement frame;
 
     @FindBy(id = "frame-button")
-    public WebElement frameButton;
+    private WebElement frameButton;
 
     private WebDriver driver;
 

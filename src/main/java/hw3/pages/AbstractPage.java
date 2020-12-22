@@ -29,14 +29,6 @@ public class AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
-
-    public LeftSideMenu getLeftSideMenu() {
-        return leftSideMenu;
-    }
-
     public void open() {
         driver.get(url);
     }
@@ -51,10 +43,6 @@ public class AbstractPage {
 
     public String getPageTitle() {
         return driver.getTitle();
-    }
-
-    public String getElementText(WebElement element) {
-        return element.getText();
     }
 
     public List<String> getNavigationItemsText() {
