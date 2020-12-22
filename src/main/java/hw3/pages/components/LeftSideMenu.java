@@ -1,11 +1,11 @@
-package hw3.pagecomponents;
+package hw3.pages.components;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LeftSideMenu {
@@ -30,5 +30,15 @@ public class LeftSideMenu {
 
     public LeftSideMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    public List<String> getLeftSectionItemsText() {
+        List<String> leftSecItemsText = new ArrayList<>();
+        leftSecItemsText.add(homeItem.getText());
+        leftSecItemsText.add(contactFormItem.getText());
+        leftSecItemsText.add(serviceItem.getText());
+        leftSecItemsText.add(metalsAndColorsItem.getText());
+        leftSecItemsText.add(elementsPacksItem.getText());
+        return leftSecItemsText;
     }
 }

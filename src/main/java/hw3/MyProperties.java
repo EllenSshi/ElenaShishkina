@@ -8,6 +8,8 @@ import java.util.Properties;
 public class MyProperties {
     protected String username;
     protected String password;
+    protected String baseUrl;
+    protected String fullUserName;
     public MyProperties() {
         try (InputStream input = new FileInputStream("config.properties")) {
 
@@ -19,6 +21,8 @@ public class MyProperties {
             // get the property value
             username = prop.getProperty("username");
             password = prop.getProperty("password");
+            baseUrl = prop.getProperty("baseurl");
+            fullUserName = prop.getProperty("fullusername");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -32,4 +36,10 @@ public class MyProperties {
     public String getPassword() {
         return password;
     }
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public String getFullUserName() { return fullUserName; }
 }

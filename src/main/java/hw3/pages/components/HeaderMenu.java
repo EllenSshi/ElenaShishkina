@@ -1,4 +1,4 @@
-package hw3.pagecomponents;
+package hw3.pages.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HeaderMenu {
 
-    @FindBy(xpath = "//nav[@role='navigation']//ul//li")
+    @FindBy(css = "nav[role='navigation'] > ul:nth-child(3) > li")
     private List<WebElement> navigationItems;
 
     @FindBy(className = "profile-photo")
@@ -26,6 +27,9 @@ public class HeaderMenu {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
+    @FindBy(id = "user-name")
+    private WebElement logginedUserName;
+
     @FindBy(css = ".nav a[href='index.html']")
     public WebElement homeItem;
 
@@ -38,7 +42,8 @@ public class HeaderMenu {
     @FindBy(css = ".nav a[href='metals-colors.html']")
     public WebElement metalsAndColorsItem;
 
-    SoftAssert softAssert = new SoftAssert();
+    @FindBy(css = ".dropdown-menu a[href='different-elements.html']")
+    private WebElement differentElementsItem;
 
     public HeaderMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -60,7 +65,21 @@ public class HeaderMenu {
         loginButton.click();
     }
 
-    public void assertUserLoggined(String fullname) {
-        softAssert.assertEquals(userName.getText(), fullname);
+    public String getLogginedUserName() {
+        return logginedUserName.getText();
+    }
+
+    public List<String> getNavigationItemsText() {
+        List<String> navItemsText = new ArrayList<>();
+        navItemsText.add(homeItem.getText());
+        navItemsText.add(contactFormItem.getText());
+        navItemsText.add(serviceItem.getText());
+        navItemsText.add(metalsAndColorsItem.getText());
+        return navItemsText;
+    }
+
+    public void goToDifferentElementsPage() {
+        serviceItem.click();
+        differentElementsItem.click();
     }
 }

@@ -1,23 +1,18 @@
 package hw3.pages;
 
 import com.google.inject.Inject;
-import hw3.pagecomponents.HeaderMenu;
-import hw3.pagecomponents.LeftSideMenu;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IndexPage extends AbstractPage {
 
     private final static String path = "index.html";
-
-    @FindBy(xpath = "//nav[@role='navigation']//ul//li")
-    private List<WebElement> navigationItems;
 
     @FindBy(css = ".benefit > .benefit-icon")
     private List<WebElement> benefitIcons;
@@ -43,43 +38,38 @@ public class IndexPage extends AbstractPage {
     @FindBy(id = "frame-button")
     public WebElement frameButton;
 
-    SoftAssert softAssert = new SoftAssert();
     private WebDriver driver;
-    private HeaderMenu headerMenu;
-    private LeftSideMenu leftSideMenu;
 
     private String frameName = "frame";
 
-    @Inject
     public IndexPage(WebDriver driver) {
         super(driver, path);
         this.driver = driver;
-        headerMenu = new HeaderMenu(driver);
-        leftSideMenu = new LeftSideMenu(driver);
         PageFactory.initElements(driver, this);
-    }
-
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
-
-    public LeftSideMenu getLeftSideMenu() {
-        return leftSideMenu;
-    }
-
-    public void assertFourImages() {
-        softAssert.assertEquals(benefitIcons.size(), 4);
-    }
-
-    public void assertFourTexts() {
-        softAssert.assertEquals(benefitTexts.size(), 4);
     }
 
     public String getFrameName() {
         return frameName;
     }
 
-    public void verifyIframeExists() {
-        frame.isDisplayed();
+    public Boolean isFrameDisplayed() {
+        return frame.isDisplayed();
+    }
+
+    public Integer getBenefitImagesCount() {
+        return benefitIcons.size();
+    }
+
+    public List<String> getBenefitText() {
+        List<String> benefitText = new ArrayList<>();
+        benefitText.add(practiceText.getText());
+        benefitText.add(customText.getText());
+        benefitText.add(multiText.getText());
+        benefitText.add(baseText.getText());
+        return benefitText;
+    }
+
+    public String getFrameButtonText() {
+        return getAttributeValue(frameButton, "value");
     }
 }
