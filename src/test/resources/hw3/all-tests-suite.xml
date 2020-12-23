@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All tests for homework 3">
+    <test name="All tests">
+        <classes>
+            <class name="hw3.ExerciseOneTest"/>
+            <class name="hw3.ExerciseTwoTest"/>
+        </classes>
+    </test>
+</suite>
