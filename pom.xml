@@ -28,6 +28,15 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw4/all-tests-suite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/all-tests-suite.xml</suite.file>
             </properties>
         </profile>
