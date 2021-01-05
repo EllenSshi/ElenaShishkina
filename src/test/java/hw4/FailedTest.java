@@ -1,4 +1,4 @@
-package hw3;
+package hw4;
 
 import hw3.pages.IndexPage;
 import org.testng.annotations.Test;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class ExerciseOneTest extends AbstractTest {
+public class FailedTest extends AbstractTest {
 
     @Test
     public void testFirstExercise() {
@@ -21,7 +21,7 @@ public class ExerciseOneTest extends AbstractTest {
         softAssert.assertEquals(indexPage.getLogginedUserName(), properties.getFullUserName());
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         int actualHeaderItems = indexPage.getNavigationItemsText().size();
-        int expectedHeaderItems = 4;
+        int expectedHeaderItems = 3;
         softAssert.assertEquals(actualHeaderItems, expectedHeaderItems,
                 String.format("Expected %s navigation items on Index Page, but got %s ", expectedHeaderItems,
                         actualHeaderItems));

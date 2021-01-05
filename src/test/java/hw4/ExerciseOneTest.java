@@ -1,4 +1,4 @@
-package hw3;
+package hw4;
 
 import hw3.pages.IndexPage;
 import org.testng.annotations.Test;
@@ -62,7 +62,7 @@ public class ExerciseOneTest extends AbstractTest {
                         expectedLeftSectionItems, actualLeftSectionItems));
         List<String> actualLeftSectionItemsText = indexPage.getLeftSectionItemsText();
         List<String> expectedLeftSectionItemsText = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
-        softAssert.assertEquals(actualLeftSectionItemsText, expectedLeftSectionItemsText);
+        softAssert.assertEquals(actualHeaderItemsText, expectedHeaderItemsText);
         softAssert.assertAll();
     }
 }
