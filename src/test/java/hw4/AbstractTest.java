@@ -1,6 +1,8 @@
 package hw4;
 
 import hw3.MyProperties;
+import hw4.steps.ActionStep;
+import hw4.steps.AssertionStep;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +14,10 @@ import org.testng.asserts.SoftAssert;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
-    SoftAssert softAssert = new SoftAssert();
     MyProperties properties = new MyProperties();
+
+    ActionStep actionStep;
+    AssertionStep assertionStep;
 
     protected WebDriver driver;
 
@@ -27,6 +31,8 @@ public abstract class AbstractTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+        actionStep = new ActionStep(driver);
+        assertionStep = new AssertionStep(driver);
     }
 
     @AfterMethod
@@ -34,13 +40,5 @@ public abstract class AbstractTest {
         if (driver != null) {
             driver.quit();
         }
-    }
-
-    public void switchToFrame(String frameName) {
-        driver.switchTo().frame(frameName);
-    }
-
-    public void switchToDefault() {
-        driver.switchTo().defaultContent();
     }
 }
