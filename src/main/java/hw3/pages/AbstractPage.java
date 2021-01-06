@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AbstractPage {
+public abstract class AbstractPage {
 
     static MyProperties properties = new MyProperties();
     private WebDriver driver;
@@ -73,5 +73,13 @@ public class AbstractPage {
 
     public Boolean areLogRecordsAsExpected(List<String> logs) {
         return logSection.areLogRecordsAsExpected(logs);
+    }
+
+    public void switchToFrame(String frameName) {
+        driver.switchTo().frame(frameName);
+    }
+
+    public void switchToDefault() {
+        driver.switchTo().defaultContent();
     }
 }

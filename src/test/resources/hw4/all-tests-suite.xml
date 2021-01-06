@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All tests for homework 4">
+    <listeners>
+        <listener class-name="hw4.listeners.AllureListener"></listener>
+    </listeners>
+    <test name="All tests">
+        <classes>
+            <class name="hw4.ExerciseOneTest"/>
+            <class name="hw4.ExerciseTwoTest"/>
+            <class name="hw4.FailedTest"/>
+        </classes>
+    </test>
+</suite>
