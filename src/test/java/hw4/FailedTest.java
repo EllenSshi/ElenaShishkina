@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-@Feature("")
-@Story("")
+@Feature("Homework 4. Allure + Jenkins")
+@Story("Exercise one. Failed test")
 public class FailedTest extends AbstractTest {
 
     @Test(description = "Test exercise 1 from homework 3, but failed")

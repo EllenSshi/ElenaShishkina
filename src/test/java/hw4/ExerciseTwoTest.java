@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Feature("")
-@Story("")
+@Feature("Homework 4. Allure + Jenkins")
+@Story("Exercise two")
 public class ExerciseTwoTest extends AbstractTest {
 
     @Test(description = "Test exercise 2 from homework 3")
