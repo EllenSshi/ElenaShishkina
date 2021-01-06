@@ -1,11 +1,15 @@
 package hw4;
 
 import hw3.pages.IndexPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Feature("")
+@Story("")
 public class FailedTest extends AbstractTest {
 
     @Test(description = "Test exercise 1 from homework 3, but failed")

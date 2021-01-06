@@ -6,6 +6,7 @@ import hw4.steps.AssertionStep;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -27,12 +28,13 @@ public abstract class AbstractTest {
     }
 
     @BeforeMethod
-    public void setupTest() {
+    public void setupTest(ITestContext testContext) {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
         actionStep = new ActionStep(driver);
         assertionStep = new AssertionStep(driver);
+        testContext.setAttribute("driver", driver);
     }
 
     @AfterMethod

@@ -2,12 +2,16 @@ package hw4;
 
 import hw3.pages.DifferentElementsPage;
 import hw3.pages.IndexPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Feature("")
+@Story("")
 public class ExerciseTwoTest extends AbstractTest {
 
     @Test(description = "Test exercise 2 from homework 3")
