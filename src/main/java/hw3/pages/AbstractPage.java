@@ -61,6 +61,14 @@ public abstract class AbstractPage {
         headerMenu.goToDifferentElementsPage();
     }
 
+    public void clickOnService() {
+        headerMenu.clickOnService();
+    }
+
+    public void goToUserTablePage() {
+        headerMenu.goToUserTablePage();
+    }
+
     public void selectCheckboxOrRadio(List<WebElement> elements, List<String> names) {
         for (WebElement element : elements) {
             for (String name : names) {
