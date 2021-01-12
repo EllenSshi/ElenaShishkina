@@ -16,7 +16,7 @@ Feature: User Table
     And User table should contain following values:
       | Number | User | Description |
       | 1 | Roman            | Wolverine                        |
-      | 2 | Sergey Ivan    | Spider Man                       |
+      | 2 | Sergey Ivan      | Spider Man                       |
       | 3 | Vladzimir        | Punisher                         |
       | 4 | Helen Bennett    | Captain America some description |
       | 5 | Yoshi Tannamuri  | Cyclope some description         |
