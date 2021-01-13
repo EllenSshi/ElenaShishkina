@@ -18,6 +18,7 @@ public class ThenStep extends AbstractStep {
     public void thereAreLogRecords(DataTable records) {
         List<String> expectedLogRecords = records.asList(String.class);
         softAssert.assertTrue(difElementsPage.areLogRecordsAsExpected(expectedLogRecords));
+        softAssert.assertAll();
     }
 
     @Then("{string} page should be opened")
@@ -43,5 +44,20 @@ public class ThenStep extends AbstractStep {
     @Then("{word} checkboxes should be displayed on Users Table on User Table Page")
     public void vipCheckboxesShouldBeDisplayed(String number) {
         softAssert.assertEquals(userTablePage.getVipCheckboxesNumber(), Integer.parseInt(number));
+    }
+
+    @Then("User table should contain following values:")
+    public void userTableShouldContain(DataTable values) {
+        List<List<String>> expectedValues = values.subTable(1,0).asLists();
+        List<List<String>> actualValues = userTablePage.getAllUserValues();
+        softAssert.assertEquals(actualValues, expectedValues);
+    }
+
+    @Then("droplist should contain values in column Type for user {string}")
+    public void droplistShouldContainValuesInColumnTypeForUser(String user, DataTable values) {
+        List<String> actualValues = userTablePage.getDroplistValuesFromColumnTypeForUser(user);
+        List<String> expectedValues = values.subTable(1,0).asList();
+        softAssert.assertEquals(actualValues, expectedValues);
+        softAssert.assertAll();
     }
 }

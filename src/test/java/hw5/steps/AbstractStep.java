@@ -4,6 +4,7 @@ import hw3.pages.DifferentElementsPage;
 import hw3.pages.IndexPage;
 import hw3.pages.UserTablePage;
 import hw5.services.driver.WebDriverSingleton;
+import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
@@ -21,5 +22,4 @@ public class AbstractStep {
         userTablePage = new UserTablePage(driver);
         softAssert = new SoftAssert();
     }
-
 }
