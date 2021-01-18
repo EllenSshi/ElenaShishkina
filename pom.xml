@@ -16,12 +16,12 @@
         </repository>
     </repositories>
 
-
     <properties>
         <testng.version>7.3.0</testng.version>
         <aspectj.version>1.8.10</aspectj.version>
         <allure.version>2.13.8</allure.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <cucumber.version>6.9.1</cucumber.version>
     </properties>
 
     <profiles>
@@ -29,6 +29,15 @@
             <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw5/all-tests-suite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw4/all-tests-suite.xml</suite.file>
@@ -102,7 +111,7 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>4.2.2</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -110,6 +119,17 @@
             <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

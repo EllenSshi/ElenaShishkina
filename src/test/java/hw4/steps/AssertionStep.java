@@ -3,7 +3,6 @@ package hw4.steps;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class AssertionStep extends AbstractStep {

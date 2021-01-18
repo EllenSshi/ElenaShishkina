@@ -43,6 +43,9 @@ public class HeaderMenu {
     @FindBy(css = ".dropdown-menu a[href='different-elements.html']")
     private WebElement differentElementsItem;
 
+    @FindBy(css = ".dropdown-menu a[href='user-table.html']")
+    private WebElement userTableItem;
+
     public HeaderMenu(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -65,6 +68,14 @@ public class HeaderMenu {
         navItemsText.add(serviceItem.getText());
         navItemsText.add(metalsAndColorsItem.getText());
         return navItemsText;
+    }
+
+    public void clickOnService() {
+        serviceItem.click();
+    }
+
+    public void goToUserTablePage() {
+        userTableItem.click();
     }
 
     public void goToDifferentElementsPage() {
