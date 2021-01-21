@@ -10,6 +10,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -40,14 +41,18 @@ public class MyJDITest {
         indexPage.checkOpened();
         metalsAndColors.click();
         metalsAndColorsPage.checkOpened();
-        odds.select(((JSONArray) metalColor.get("summary")).get(0).toString());
-        evens.select(((JSONArray) metalColor.get("summary")).get(1).toString());
+        String odd = ((JSONArray) metalColor.get("summary")).get(0).toString();
+        odds.select(odd);
+        String even = ((JSONArray) metalColor.get("summary")).get(1).toString();
+        evens.select(even);
         JSONArray elements = (JSONArray) metalColor.get("elements");
         for (int i = 0; i < elements.size(); i++) {
             elems.select(elements.get(i).toString());
         }
-        clrs.select(metalColor.get("color").toString());
-        metals.select(metalColor.get("metals").toString());
+        String expectedColor = metalColor.get("color").toString();
+        clrs.select(expectedColor);
+        String expectedMetal = metalColor.get("metals").toString();
+        metals.select(expectedMetal);
         JSONArray vegs = (JSONArray) metalColor.get("vegetables");
         vegetables.select("Vegetables");
         for (int i = 0; i < vegs.size(); i++) {
@@ -55,8 +60,20 @@ public class MyJDITest {
         }
         submitForm.click();
 
+        String expectedSumRes = String.valueOf(Integer.parseInt(odd) + Integer.parseInt(even));
+        String actualSumRes = sumRes.getText().split(" ")[1];
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(actualSumRes, expectedSumRes);
+        String actualElems = elemRes.getText().split(": ")[1];
+        softAssert.assertEquals(actualElems.split(", "), elements.toArray());
+        softAssert.assertEquals(expectedColor, colorRes.getText().split(": ")[1]);
+        softAssert.assertEquals(expectedMetal, metRes.getText().split(": ")[1]);
+        String actualVegs = vegRes.getText().split(": ")[1];
+        softAssert.assertEquals(actualVegs.split(", "), vegs.toArray());
+
         userIcon.click();
         logout.click();
+        softAssert.assertAll();
     }
 
     @DataProvider(name="dp")
