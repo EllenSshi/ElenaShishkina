@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All JDI tests for homework 6">
+    <test name="All JDI tests">
+        <classes>
+            <class name="hw6.MyJDITest"/>
+        </classes>
+    </test>
+</suite>
