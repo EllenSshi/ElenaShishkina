@@ -1,13 +1,12 @@
 package hw6.pages;
 
 import com.epam.jdi.light.elements.common.UIElement;
-import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import hw6.entities.MetalsAndColors;
 import hw6.sections.MetalsAndColorsForm;
 import org.testng.asserts.SoftAssert;
 
-public class MetalsAndColorsPage extends WebPage {
+public class MetalsAndColorsPage extends AbstractPage {
 
     @Css(".form") public MetalsAndColorsForm metalsAndColorsForm;
     @Css(".summ-res")

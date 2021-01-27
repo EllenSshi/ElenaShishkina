@@ -32,7 +32,8 @@ public class MetalsAndColorsForm extends Form<MetalsAndColors> {
             expand = ".caret")
     public static Dropdown vegetables;
 
-    public void submitForm(MetalsAndColors metalsAndColors) {
+    @Override
+    public void submit(MetalsAndColors metalsAndColors) {
         String odd = metalsAndColors.summary[0].toString();
         odds.select(odd);
         String even = metalsAndColors.summary[1].toString();

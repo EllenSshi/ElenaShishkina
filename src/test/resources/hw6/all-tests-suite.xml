@@ -2,7 +2,7 @@
 <suite name="All JDI tests for homework 6">
     <test name="All JDI tests">
         <classes>
-            <class name="hw6.MyJDITest"/>
+            <class name="hw6.MetalsAndColorsJDITest"/>
         </classes>
     </test>
 </suite>

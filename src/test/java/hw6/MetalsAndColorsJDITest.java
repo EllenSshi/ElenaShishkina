@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import static hw6.JDITestData.DEFAULT_USER;
 
-public class MyJDITest {
+public class MetalsAndColorsJDITest {
 
     @BeforeSuite
     public void beforeSuite() {
@@ -24,10 +24,10 @@ public class MyJDITest {
     @Test(dataProvider = "metalsAndColors", dataProviderClass = JDITestData.class)
     public void metalsAndColorsTest(MetalsAndColors metalColor) {
         JDITestSite.open();
-        JDITestSite.login(DEFAULT_USER);
-        JDITestSite.openPageFromMenu(JDITestSite.metalsAndColors);
-        JDITestSite.metalsAndColorsPage.metalsAndColorsForm.submitForm(metalColor);
+        JDITestSite.indexPage.login(DEFAULT_USER);
+        JDITestSite.indexPage.openPageFromMenu(JDITestSite.indexPage.metalsAndColors);
+        JDITestSite.metalsAndColorsPage.metalsAndColorsForm.submit(metalColor);
         JDITestSite.metalsAndColorsPage.checkResult(metalColor);
-        JDITestSite.logout();
+        JDITestSite.metalsAndColorsPage.logout();
     }
 }
