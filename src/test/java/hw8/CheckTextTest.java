@@ -1,9 +1,13 @@
 package hw8;
 
+import hw6.JDITestData;
+import hw8.dto.SpellRequestDto;
 import hw8.dto.SpellResultDto;
-import hw8.service.PropertyService;
+import hw8.dto.SpellTestData;
 import hw8.service.RestSpellerAssertions;
 import hw8.service.RestSpellerService;
+import hw8.service.constants.ErrorCode;
+import hw8.service.constants.Language;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,28 +15,30 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.testng.Assert.assertEquals;
-
 public class CheckTextTest {
-
-    public final int code = new PropertyService().getErrorUnknownWord();
-    public final String eng = new PropertyService().getEnglishLang();
-    public final String rus = new PropertyService().getRussianLang();
+    @Test
+    public void checkCorrectText() throws IOException {
+        String text = "This is a sentence without any mistakes";
+        SpellResultDto[] spellRes = new RestSpellerService().checkText(text, Language.ENGLISH);
+        new RestSpellerAssertions(spellRes)
+                .verifyEmptySpellResult();
+    }
 
     @Test
     public void checkTextWithOneIncorrectWord() throws IOException {
         String text = "Hello my mstake";
-        SpellResultDto[] spellRes = new RestSpellerService().checkText(text, eng);
+        SpellResultDto[] spellRes = new RestSpellerService().checkText(text, Language.ENGLISH);
         new RestSpellerAssertions(spellRes)
-                .verifySpellResult(code, Arrays.asList("mistake","mistakes","mistaken"));
+                .verifySpellResult(ErrorCode.ERROR_UNKNOWN_WORD,
+                        Arrays.asList("mistake","mistakes","mistaken"));
     }
 
     @Test
     public void checkTextWithTwoIncorrectWords() throws IOException {
         String text = "vegetubles are potatous and carrots";
-        SpellResultDto[] spellRes = new RestSpellerService().checkText(text, eng);
+        SpellResultDto[] spellRes = new RestSpellerService().checkText(text, Language.ENGLISH);
         new RestSpellerAssertions(spellRes)
-                .verifySpellResults(new Integer[] {code, code},
+                .verifySpellResults(new Integer[] {ErrorCode.ERROR_UNKNOWN_WORD, ErrorCode.ERROR_UNKNOWN_WORD},
                         Arrays.asList(Collections.singletonList("vegetables"),
                         Arrays.asList("potatoes","potatos","potato")));
     }
@@ -40,9 +46,9 @@ public class CheckTextTest {
     @DataProvider
     public Object[][] spellerData() {
         return new Object[][]{
-                {"unpredectable", eng, code, "unpredictable","unpredictably","predictable"},
-                {"fasinating", eng, code, "fascinating","facinating","facsinating"},
-                {"aple", eng, code, "apple","maple","able"},
+                {"unpredectable", Language.ENGLISH, ErrorCode.ERROR_UNKNOWN_WORD, "unpredictable","unpredictably","predictable"},
+                {"fasinating", Language.ENGLISH, ErrorCode.ERROR_UNKNOWN_WORD, "fascinating","facinating","facsinating"},
+                {"aple", Language.ENGLISH, ErrorCode.ERROR_UNKNOWN_WORD, "apple","maple","able"},
         };
     }
 
@@ -52,5 +58,15 @@ public class CheckTextTest {
         SpellResultDto[] spellRes = new RestSpellerService().checkText(text, lang);
         new RestSpellerAssertions(spellRes)
                 .verifySpellResult(code, Arrays.asList(expectedS));
+    }
+
+    @Test(dataProvider = "spellerTestData", dataProviderClass = SpellTestData.class)
+    void checkTextWithDataFromFile(Object[] reqAndRes) throws IOException {
+        SpellRequestDto req = (SpellRequestDto) reqAndRes[0];
+        SpellResultDto resp = (SpellResultDto) reqAndRes[1];
+        SpellResultDto[] spellRes = new RestSpellerService().checkText(req.getText(), req.getLang());
+
+        new RestSpellerAssertions(spellRes)
+                .verifySpellResult(resp.getCode(), resp.getS());
     }
 }

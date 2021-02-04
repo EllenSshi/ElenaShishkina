@@ -1,0 +1,14 @@
+[
+  {
+    "text": "aple",
+    "lang": "en",
+    "expectedCode": 1,
+    "expectedWords": ["apple","maple","able"]
+  },
+  {
+    "text": "fasinating",
+    "lang": "en",
+    "expectedCode": 1,
+    "expectedWords": ["fascinating","facinating","facsinating"]
+  }
+]

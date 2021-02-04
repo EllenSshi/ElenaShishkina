@@ -15,14 +15,18 @@ public class RestSpellerAssertions {
         this.spellResult = response;
     }
 
-    public RestSpellerAssertions verifySpellResult(int code, List<String> s) {
+    public RestSpellerAssertions verifySpellResult(int code, List<String> correctWords) {
         assertEquals(spellResult.length, 1, "Incorrect list of spellResult size");
         assertEquals(spellResult[0].getCode(), code, "Incorrect error code");
-        assertEquals(spellResult[0].getS(), s, "Incorrect list of expected correct words");
+        assertEquals(spellResult[0].getS(), correctWords, "Incorrect list of expected correct words");
         return this;
     }
 
-    public void verifySpellResults(Integer[] code, List<List<String>> s) {
+    public void verifyEmptySpellResult() {
+        assertEquals(spellResult.length, 0, "Result is not empty");
+    }
+
+    public void verifySpellResults(Integer[] code, List<List<String>> correctWords) {
         assertEquals(
                 stream(spellResult).map(SpellResultDto::getCode).collect(toList()).toArray(new Integer[]{}),
                 code,
@@ -30,7 +34,7 @@ public class RestSpellerAssertions {
 
         assertEquals(
                 stream(spellResult).map(SpellResultDto::getS).collect(toList()),
-                s,
+                correctWords,
                 "Incorrect ses");
     }
 }
