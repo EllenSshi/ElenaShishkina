@@ -2,13 +2,13 @@
   {
     "text": "aple",
     "lang": "en",
-    "expectedCode": 1,
-    "expectedWords": ["apple","maple","able"]
+    "code": 1,
+    "s": ["apple","maple","able"]
   },
   {
     "text": "fasinating",
     "lang": "en",
-    "expectedCode": 1,
-    "expectedWords": ["fascinating","facinating","facsinating"]
+    "code": 1,
+    "s": ["fascinating","facinating","facsinating"]
   }
 ]

@@ -1,13 +1,11 @@
 package hw8;
 
-import hw6.JDITestData;
 import hw8.dto.SpellRequestDto;
 import hw8.dto.SpellResultDto;
-import hw8.dto.SpellTestData;
 import hw8.service.RestSpellerAssertions;
 import hw8.service.RestSpellerService;
-import hw8.service.constants.ErrorCode;
-import hw8.service.constants.Language;
+import hw8.constants.ErrorCode;
+import hw8.constants.Language;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

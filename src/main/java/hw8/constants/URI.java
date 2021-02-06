@@ -1,4 +1,4 @@
-package hw8.service.constants;
+package hw8.constants;
 
 public class URI {
     public static final String CHECK_TEXT = "checkText";

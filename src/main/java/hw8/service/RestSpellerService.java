@@ -2,7 +2,7 @@ package hw8.service;
 
 import com.google.gson.Gson;
 import hw8.dto.SpellResultDto;
-import hw8.service.constants.URI;
+import hw8.constants.URI;
 
 import java.io.IOException;
 import java.util.HashMap;

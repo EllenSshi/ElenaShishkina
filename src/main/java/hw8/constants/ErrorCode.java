@@ -1,4 +1,4 @@
-package hw8.service.constants;
+package hw8.constants;
 
 public class ErrorCode {
     public static final int ERROR_UNKNOWN_WORD = 1;

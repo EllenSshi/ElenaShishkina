@@ -1,4 +1,4 @@
-package hw8.service.constants;
+package hw8.constants;
 
 public class Language {
     public static final String ENGLISH = "en";
