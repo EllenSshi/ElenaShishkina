@@ -1,0 +1,14 @@
+[
+  {
+    "text": "aple",
+    "lang": "en",
+    "code": 1,
+    "s": ["apple","maple","able"]
+  },
+  {
+    "text": "fasinating",
+    "lang": "en",
+    "code": 1,
+    "s": ["fascinating","facinating","facsinating"]
+  }
+]
